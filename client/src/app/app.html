@@ -1,0 +1,19 @@
+<div class="chat-container">
+  <ul id="messages">
+    <li *ngFor="let msg of messages" [class.system-message]="isSystemMessage(msg)">
+      <span *ngIf="isSystemMessage(msg)"><strong>{{ formatMessage(msg) }}</strong></span>
+      <span *ngIf="!isSystemMessage(msg)">{{ msg }}</span>
+    </li>
+  </ul>
+
+  <form (ngSubmit)="send()">
+    <input
+      type="text"
+      name="chatBox"
+      [(ngModel)]="chatBox"
+      placeholder="Type a message..."
+      autocomplete="off"
+    />
+    <button type="submit">Send</button>
+  </form>
+</div>
